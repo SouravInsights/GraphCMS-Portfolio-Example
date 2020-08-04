@@ -57,7 +57,7 @@ const Work = ({ works }) => {
                             whileHover={{ scale: 1.1 }}
                             key={work.slug}
                         >
-                            <Image borderRadius="10px" my="20px" maxWidth="90%" src={"work.coverImage.url"} />
+                            <Image borderRadius="10px" my="20px" maxWidth="90%" src={work.coverImage.url} />
                             <Heading mb="20px" w="90%" fontWeight="extrabold" color="white" fontSize={["xl", "xl", "2xl", "2xl"]}>
                                 {work.name}
                                 &nbsp; - &nbsp;

@@ -1,0 +1,18 @@
+/* Follow this section https://nextjs.org/docs/advanced-features/module-path-aliases for infomation about why 
+   we need this file what it does. */
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/lib/*": [
+        "util/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ]
+    }
+  }
+}

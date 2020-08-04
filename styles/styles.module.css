@@ -1,0 +1,27 @@
+.shiny {
+    color: #fff;
+    background: linear-gradient(to right, #4d4d4d 0, #fff 10%, #4d4d4d 20%);
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 0;
+    }
+    50% {
+      background-position: 250px;
+    }
+    100% {
+      background-position: 250px;
+    }
+  }
+  

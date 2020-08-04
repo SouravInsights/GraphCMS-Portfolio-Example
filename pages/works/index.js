@@ -102,21 +102,23 @@ const Work = ({ works }) => {
                 justifyContent="flex-start"
                 flexDirection={["row", "row", "row", "row"]}
               >
-                {work.tags && (
-                  <Box
-                    w="auto"
-                    px="8px"
-                    borderRadius="20px"
-                    mr="6px"
-                    bg="#5A5454"
-                    color="white"
-                    textAlign="center"
-                    fontSize={["sm", "sm", "sm", "sm"]}
-                    fontWeight="medium"
-                  >
-                    {work.tags.label}
-                  </Box>
-                )}
+                {work.tags.length &&
+                  work.tags.map((tag, index) => (
+                    <Box
+                      w="auto"
+                      px="8px"
+                      borderRadius="20px"
+                      mr="6px"
+                      bg="#5A5454"
+                      color="white"
+                      textAlign="center"
+                      fontSize={["sm", "sm", "sm", "sm"]}
+                      fontWeight="medium"
+                      key={index}
+                    >
+                      {tag.label}
+                    </Box>
+                  ))}
               </Flex>
               <Box
                 w="90%"

@@ -34,7 +34,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   z-index: 0;
   background-color: "#f00fff";
   background: url(https://media.graphcms.com/HGxboYQPTXqmn5RU1WKr);

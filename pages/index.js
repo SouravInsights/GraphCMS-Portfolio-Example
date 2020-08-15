@@ -344,7 +344,7 @@ const Home = ({ articles, works }) => {
               <Link
                 mt={1}
                 display="block"
-                fontSize="2xl"
+                fontSize={["xl", "xl", "2xl", "2xl"]}
                 color="white"
                 lineHeight="normal"
                 fontWeight="extrabold"
@@ -352,7 +352,12 @@ const Home = ({ articles, works }) => {
               >
                 {article.title}
               </Link>
-              <Text mt={1} fontSize="xl" fontWeight="medium" color="gray.200">
+              <Text
+                mt={1}
+                fontSize={["lg", "lg", "xl", "xl"]}
+                fontWeight="medium"
+                color="gray.200"
+              >
                 {article.excerpt}
               </Text>
               <Flex mt={3} w="90%" wrap="wrap">

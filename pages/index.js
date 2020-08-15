@@ -321,7 +321,7 @@ const Home = ({ articles, works }) => {
           <BlogCard
             my={10}
             mx={["30px", "30px", "80px", "140px"]}
-            p={8}
+            p={[4, 4, 6, 6]}
             maxWidth="85%"
             mx="auto"
             bg="#2C2929"

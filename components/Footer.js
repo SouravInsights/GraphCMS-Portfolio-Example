@@ -37,10 +37,16 @@ const Footer = () => {
           fontWeight="medium"
           letterSpacing="0.1em"
           color="gray.50"
+          textAlign="center"
         >
           THANKS FOR STOPPING BY
         </Text>
-        <Heading fontSize="2xl" color="gray.50" fontWeight="extrabold">
+        <Heading
+          fontSize="2xl"
+          textAlign="center"
+          color="gray.50"
+          fontWeight="extrabold"
+        >
           Hope you're doing great!
         </Heading>
       </Box>

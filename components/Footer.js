@@ -24,14 +24,14 @@ const ContactButton = motion.custom(Button);
 const Footer = () => {
   return (
     <Flex
-      bg="white"
+      bg="#FFCB1F"
       px={["30px", "30px", "80px", "140px"]}
       py={["20px", "20px", "20px", "20px"]}
       justifyContent={["none", "none", "space-between", "space-between"]}
       flexDirection={["column", "column", "row", "row"]}
       className={styles.footer}
     >
-      <Box zIndex="1">
+      <Box mb={4} zIndex="1">
         <Text
           fontSize="18px"
           fontWeight="medium"
@@ -79,6 +79,7 @@ const Footer = () => {
           fontWeight="bold"
           fontSize={["sm", "sm", "sm", "sm"]}
           color="gray.50"
+          mb={4}
         >
           Copyright @ 2020 | SouravInsights. Please don't fork me!
         </Text>

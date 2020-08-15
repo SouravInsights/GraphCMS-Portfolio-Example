@@ -1,27 +1,41 @@
 .shiny {
-    color: #fff;
-    background: linear-gradient(to right, #4d4d4d 0, #fff 10%, #4d4d4d 20%);
+  color: #fff;
+  background: linear-gradient(to right, #4d4d4d 0, #fff 10%, #4d4d4d 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes shine {
+  0% {
     background-position: 0;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
-    animation-fill-mode: forwards;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: none;
-    -moz-osx-font-smoothing: grayscale;
-    text-decoration: none;
-    white-space: nowrap;
   }
-  
-  @keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    50% {
-      background-position: 250px;
-    }
-    100% {
-      background-position: 250px;
-    }
+  50% {
+    background-position: 250px;
   }
-  
+  100% {
+    background-position: 250px;
+  }
+}
+
+.footer {
+  position: relative;
+}
+.footer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: repeat;
+  z-index: 0;
+  background-color: "#f00fff";
+  background: url(https://media.graphcms.com/HGxboYQPTXqmn5RU1WKr);
+}

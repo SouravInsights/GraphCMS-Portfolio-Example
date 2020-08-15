@@ -115,7 +115,7 @@ const Home = ({ articles, works }) => {
         <title>SouravInsights - Digital Garden</title>
       </Head>
       <Flex
-        mx={["60px", "60px", "none", "none"]}
+        mx={["30px", "30px", "none", "none"]}
         direction={["column", "column", "row", "row"]}
       >
         <Box width="90%">

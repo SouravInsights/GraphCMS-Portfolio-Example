@@ -295,7 +295,7 @@ const Home = ({ articles, works }) => {
       <Box as="section">
         <Flex
           flexDirection="column"
-          my="20"
+          my={[10, 10, 20, 20]}
           px={["30px", "30px", "80px", "140px"]}
         >
           <Box>

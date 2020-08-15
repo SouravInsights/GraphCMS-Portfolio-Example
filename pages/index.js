@@ -25,7 +25,7 @@ export async function getStaticProps() {
     "https://api-ap-northeast-1.graphcms.com/v2/ckd2lanxl00w001wb9zb33zl1/master"
   );
 
-  const { articles, works } = await graphcms.request(
+  const { articles, works, communities } = await graphcms.request(
     `
     {
       articles(where: {
@@ -52,6 +52,14 @@ export async function getStaticProps() {
           label
         }
       }
+      communities {
+        slug
+        title
+        writeup
+        coverImage {
+          url
+        }
+      }
     }
       `
   );
@@ -60,6 +68,7 @@ export async function getStaticProps() {
     props: {
       articles,
       works,
+      communities,
     },
     revalidate: 1,
   };
@@ -70,7 +79,7 @@ const MotionHeading = motion.custom(Heading);
 const WorksCardWrapper = motion.custom(Flex);
 const BlogCard = motion.custom(Flex);
 
-const Home = ({ articles, works }) => {
+const Home = ({ articles, works, communities }) => {
   const shine = keyframes`
     0% {
     background-position: 0
@@ -408,6 +417,77 @@ const Home = ({ articles, works }) => {
             <FaLongArrowAltRight color="white" />
           </Box>
         </Flex>
+      </Box>
+
+      <Box as="section">
+        <Flex
+          flexDirection="column"
+          my={[10, 10, 20, 20]}
+          px={["30px", "30px", "80px", "140px"]}
+        >
+          <Box>
+            <Heading
+              fontSize={["3xl", "4xl", "5xl", "6xl"]}
+              scaleY="scrollYProgress"
+              fontWeight="extrabold"
+              color="white"
+            >
+              Love for Community
+            </Heading>
+
+            <Text
+              fontSize={["lg", "xl", "2xl", "3xl"]}
+              color="white"
+              fontWeight="normal"
+            >
+              Writing for myself and everyone else...
+            </Text>
+          </Box>
+        </Flex>
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+          gap={10}
+          my={[10, 10, 20, 20]}
+          px={["30px", "30px", "80px", "140px"]}
+        >
+          {communities.map((community) => (
+            <Flex
+              zIndex="0"
+              mx="auto"
+              borderRadius="12px"
+              flexDirection="column"
+              maxWidth="526px"
+              bg="#2C2929"
+              boxShadow="0px 15px 30px rgba(0, 0, 0, 0.25)"
+              whileHover={{ scale: 1.1 }}
+              key={community.slug}
+            >
+              {community.coverImage && (
+                <Image
+                  borderRadius="10px"
+                  maxWidth="100%"
+                  src={community.coverImage.url}
+                />
+              )}
+              <Box p={4}>
+                <Heading
+                  fontWeight="extrabold"
+                  color="white"
+                  fontSize={["xl", "xl", "2xl", "2xl"]}
+                >
+                  {community.title}
+                </Heading>
+                <Text
+                  color="white"
+                  fontSize={["lg", "lg", "xl", "xl"]}
+                  fontWeight="normal"
+                >
+                  {community.writeup}
+                </Text>
+              </Box>
+            </Flex>
+          ))}
+        </Grid>
       </Box>
 
       <ContactDrawer />

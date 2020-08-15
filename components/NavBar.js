@@ -47,8 +47,6 @@ const NavBar = (props) => {
         <Heading as="h1" size="lg">
           SouravInsights
         </Heading>
-        <Text>currently</Text>
-        <Heading fontSize="md">Crafting Interfaces</Heading>
       </Flex>
 
       <Box display={{ sm: "block", md: "none" }} onClick={handleToggle}>

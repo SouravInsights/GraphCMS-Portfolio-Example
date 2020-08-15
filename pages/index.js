@@ -18,6 +18,7 @@ import ContactDrawer from "components/ContactDrawer";
 import { motion } from "framer-motion";
 import styles from "../styles/styles.module.css";
 import { GraphQLClient } from "graphql-request";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 export async function getStaticProps() {
   const graphcms = new GraphQLClient(
@@ -289,7 +290,19 @@ const Home = ({ articles, works }) => {
             </WorksCardWrapper>
           ))}
         </Grid>
-        <Text>See them all</Text>
+        <Flex mt={6} justify="center" align="center">
+          <Link
+            textAlign="center"
+            fontSize="xl"
+            fontWeight="extrabold"
+            color="white"
+          >
+            See them all
+          </Link>
+          <Box ml="8px">
+            <FaLongArrowAltRight color="white" />
+          </Box>
+        </Flex>
       </Box>
 
       <Box as="section">
@@ -319,7 +332,7 @@ const Home = ({ articles, works }) => {
         </Flex>
         {articles.map((article) => (
           <BlogCard
-            my={10}
+            my={8}
             mx={["30px", "30px", "80px", "140px"]}
             p={[4, 4, 6, 6]}
             maxWidth="85%"
@@ -382,6 +395,19 @@ const Home = ({ articles, works }) => {
             </Box>
           </BlogCard>
         ))}
+        <Flex mb={6} justify="center" align="center">
+          <Link
+            textAlign="center"
+            fontSize="xl"
+            fontWeight="extrabold"
+            color="white"
+          >
+            Read them all
+          </Link>
+          <Box ml="8px">
+            <FaLongArrowAltRight color="white" />
+          </Box>
+        </Flex>
       </Box>
 
       <ContactDrawer />

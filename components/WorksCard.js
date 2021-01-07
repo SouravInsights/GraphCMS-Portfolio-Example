@@ -1,62 +1,43 @@
-import { Flex, Heading, Box, Button, Text, Image } from "@chakra-ui/core";
 import React from "react";
+import { Box, Heading, Flex, Image, Button } from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
 const WorksCardWrapper = motion.custom(Flex);
 
-export const WorkCard = ({ name, slug, pitch, tags, coverImage }) => {
-  console.log(works);
+const WorksCard = ({ coverImage, title, desc, tag }) => {
   return (
     <WorksCardWrapper
       zIndex="0"
+      flex="0 1 auto"
+      my={["20px", "20px", "40px", "40px"]}
       mx="auto"
       borderRadius="12px"
       flexDirection="column"
       align="center"
       maxWidth="526px"
-      bg="#2C2929"
+      bg="gray.100"
       boxShadow="0px 15px 30px rgba(0, 0, 0, 0.25)"
       whileHover={{ scale: 1.1 }}
-      key={slug}
     >
-      <Image borderRadius="10px" my="20px" maxWidth="90%" src={coverImage} />
+      {coverImage}
       <Heading
         mb="20px"
-        w="90%"
         fontWeight="extrabold"
         color="white"
         fontSize={["xl", "xl", "2xl", "2xl"]}
       >
-        {name}
+        {title}
         &nbsp; - &nbsp;
         <Heading
           as="span"
           fontSize={["xl", "xl", "2xl", "2xl"]}
           fontWeight="medium"
         >
-          {pitch}
+          {desc}
         </Heading>
       </Heading>
-      <Flex
-        w="90%"
-        mb="20px"
-        justifyContent="flex-start"
-        flexDirection={["row", "row", "row", "row"]}
-      >
-        <Box
-          w="auto"
-          px="8px"
-          borderRadius="20px"
-          mr="6px"
-          bg="#5A5454"
-          color="white"
-          textAlign="center"
-          fontSize={["sm", "sm", "sm", "sm"]}
-          fontWeight="medium"
-          key={index}
-        >
-          {tags}
-        </Box>
+      <Flex w="90%" mb="20px" justifyContent="flex-start" wrap="wrap">
+        {tag}
       </Flex>
       <Box
         w="90%"
@@ -81,3 +62,5 @@ export const WorkCard = ({ name, slug, pitch, tags, coverImage }) => {
     </WorksCardWrapper>
   );
 };
+
+export default WorksCard;

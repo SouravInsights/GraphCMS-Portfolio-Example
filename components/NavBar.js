@@ -1,9 +1,9 @@
 import React from "react";
 import NextLink from "next/link";
-import { Box, Flex, Button, Heading, Text } from "@chakra-ui/core";
+import { Box, Flex, Heading, Link } from "@chakra-ui/core";
 
 const NavLink = ({ children, ...props }) => (
-  <NextLink
+  <Link
     mt={{ base: 4, md: 0 }}
     mr={6}
     display="block"
@@ -14,7 +14,7 @@ const NavLink = ({ children, ...props }) => (
     {...props}
   >
     {children}
-  </NextLink>
+  </Link>
 );
 
 const NavBar = (props) => {
@@ -31,14 +31,14 @@ const NavBar = (props) => {
       justify="space-between"
       wrap="wrap"
       padding="1rem"
-      bg="#090909"
+      bg="gray.50"
       position="sticky"
       top="0"
       color="white"
-      border="1px solid"
-      borderColor="#313131"
-      borderRadius="20px"
-      boxShadow="0px 20px 40px rgba(0, 0, 0, 0.45)"
+      //border="1px solid"
+      //borderColor="gray.50"
+      //borderRadius="20px"
+      //boxShadow="0px 20px 40px rgba(0, 0, 0, 0.45)"
       height={["auto", "auto", "80px", "80px"]}
       zIndex="1"
       {...props}
@@ -77,11 +77,21 @@ const NavBar = (props) => {
         width={{ sm: "full", md: "auto" }}
         alignItems="center"
       >
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="works">Works</NavLink>
-        <NavLink href="people">People</NavLink>
-        <NavLink href="blog">Blog</NavLink>
-        <NavLink href="about">About</NavLink>
+        <NextLink href="/">
+          <NavLink>Home</NavLink>
+        </NextLink>
+        <NextLink href="works">
+          <NavLink>Works</NavLink>
+        </NextLink>
+        <NextLink href="blog">
+          <NavLink>Blog</NavLink>
+        </NextLink>
+        <NextLink href="people">
+          <NavLink>People</NavLink>
+        </NextLink>
+        <NextLink href="about">
+          <NavLink>About</NavLink>
+        </NextLink>
       </Box>
     </Flex>
   );

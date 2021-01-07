@@ -19,18 +19,21 @@ import { motion } from "framer-motion";
 import styles from "../styles/styles.module.css";
 import { GraphQLClient } from "graphql-request";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import Tag from "components/Tag";
+import WorksCard from "components/WorksCard";
+import GridCardSection from "components/GridCardSection";
 
 export async function getStaticProps() {
   const graphcms = new GraphQLClient(
     "https://api-ap-northeast-1.graphcms.com/v2/ckd2lanxl00w001wb9zb33zl1/master"
   );
 
-  const { articles, works, communities } = await graphcms.request(
+  const { stories, works, communities } = await graphcms.request(
     `
     {
-      articles(where: {
+      stories(where: {
         featured: true
-      }) {
+      } ) {
         slug
         title
         excerpt
@@ -66,7 +69,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles,
+      stories,
       works,
       communities,
     },
@@ -76,10 +79,9 @@ export async function getStaticProps() {
 
 const HomeBox = motion.custom(Box);
 const MotionHeading = motion.custom(Heading);
-const WorksCardWrapper = motion.custom(Flex);
 const BlogCard = motion.custom(Flex);
 
-const Home = ({ articles, works, communities }) => {
+const Home = ({ stories, works, communities }) => {
   const shine = keyframes`
     0% {
     background-position: 0
@@ -209,96 +211,34 @@ const Home = ({ articles, works, communities }) => {
           </Box>
         </Flex>
 
-        <Grid
-          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
-          gap={10}
+        <GridCardSection
+          columns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
           px={["30px", "30px", "80px", "140px"]}
         >
           {works.map((work) => (
-            <WorksCardWrapper
-              zIndex="0"
-              mx="auto"
-              borderRadius="12px"
-              flexDirection="column"
-              align="center"
-              maxWidth="526px"
-              bg="#2C2929"
-              boxShadow="0px 15px 30px rgba(0, 0, 0, 0.25)"
-              whileHover={{ scale: 1.1 }}
-              key={work.slug}
-            >
-              {work.coverImage && (
-                <Image
-                  borderRadius="10px"
-                  my="20px"
-                  maxWidth="90%"
-                  src={work.coverImage.url}
-                />
-              )}
-              <Heading
-                mb="20px"
-                w="90%"
-                fontWeight="extrabold"
-                color="white"
-                fontSize={["xl", "xl", "2xl", "2xl"]}
-              >
-                {work.name}
-                &nbsp; - &nbsp;
-                <Heading
-                  as="span"
-                  fontSize={["xl", "xl", "2xl", "2xl"]}
-                  fontWeight="medium"
-                >
-                  {work.pitch}
-                </Heading>
-              </Heading>
-              <Flex
-                w="90%"
-                mb="20px"
-                justifyContent="flex-start"
-                flexDirection={["row", "row", "row", "row"]}
-              >
-                {work.tags.length &&
-                  work.tags.map((tag, index) => (
-                    <Box
-                      w="auto"
-                      px="8px"
-                      borderRadius="20px"
-                      mr="6px"
-                      bg="#5A5454"
-                      color="white"
-                      textAlign="center"
-                      fontSize={["sm", "sm", "sm", "sm"]}
-                      fontWeight="medium"
-                      key={index}
-                    >
-                      {tag.label}
-                    </Box>
-                  ))}
-              </Flex>
-              <Box
-                w="90%"
-                mb="20px"
-                d="flex"
-                flexDirection="row"
-                justify="center"
-                align="center"
-              >
-                <Button
-                  bg="black"
-                  borderRadius="14px"
-                  w="auto"
-                  h="40px"
-                  color="white"
-                  fontSize="xl"
-                  fontWeight="bold"
-                >
-                  See live
-                </Button>
-              </Box>
-            </WorksCardWrapper>
+            <WorksCard
+              title={work.name}
+              desc={work.pitch}
+              coverImage={
+                work.coverImage && (
+                  <Image
+                    borderRadius="10px"
+                    my="20px"
+                    maxWidth="90%"
+                    src={work.coverImage.url}
+                    alt={work.slug}
+                  />
+                )
+              }
+              tag={
+                work.tags.length &&
+                work.tags.map((tag, index) => (
+                  <Tag key={index} tag={tag.label} />
+                ))
+              }
+            />
           ))}
-        </Grid>
+        </GridCardSection>
         <Flex mt={6} justify="center" align="center">
           <Link
             textAlign="center"
@@ -339,7 +279,7 @@ const Home = ({ articles, works, communities }) => {
             </Text>
           </Box>
         </Flex>
-        {articles.map((article) => (
+        {stories.map((story) => (
           <BlogCard
             my={8}
             mx={["30px", "30px", "80px", "140px"]}
@@ -353,12 +293,12 @@ const Home = ({ articles, works, communities }) => {
             display={{ md: "flex" }}
           >
             <Box flexShrink="0">
-              {article.coverImage && (
+              {story.coverImage && (
                 <Image
                   rounded="lg"
                   width={{ md: 40 }}
-                  src={article.coverImage.url}
-                  alt={article.slug}
+                  src={story.coverImage.url}
+                  alt={story.slug}
                 />
               )}
             </Box>
@@ -372,7 +312,7 @@ const Home = ({ articles, works, communities }) => {
                 fontWeight="extrabold"
                 href="#"
               >
-                {article.title}
+                {story.title}
               </Link>
               <Text
                 mt={1}
@@ -380,11 +320,11 @@ const Home = ({ articles, works, communities }) => {
                 fontWeight="medium"
                 color="gray.200"
               >
-                {article.excerpt}
+                {story.excerpt}
               </Text>
               <Flex mt={3} w="90%" wrap="wrap">
-                {article.tags.length &&
-                  article.tags.map((tag, index) => (
+                {story.tags.length &&
+                  story.tags.map((tag, index) => (
                     <Box
                       w="auto"
                       px="8px"

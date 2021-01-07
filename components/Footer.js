@@ -19,8 +19,6 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
-const ContactButton = motion.custom(Button);
-
 const Footer = () => {
   return (
     <Flex

@@ -2,10 +2,10 @@
    get passed to a multiple component tree. For example, this is the best place to add Themes, GlobalStyles, Auths etc. 
 */
 
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
-import { Global, css } from '@emotion/core';
-import theme from 'styles/theme'
-import NavBar from 'components/NavBar'
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { Global, css } from "@emotion/core";
+import theme from "styles/theme";
+import NavBar from "components/NavBar";
 
 const GlobalStyle = ({ children }) => {
   return (
@@ -14,11 +14,11 @@ const GlobalStyle = ({ children }) => {
       <Global
         styles={css`
           :root {
-            background: #000000;
+            background: #0e141b;
             //background: rgb(32,32,32);
             //background: linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(26,26,26,1) 33%, rgba(19,19,19,1) 66%);
             *::selection {
-              color: #0099FF;
+              color: #0099ff;
             }
           }
           html {
